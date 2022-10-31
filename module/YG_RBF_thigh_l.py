@@ -1,8 +1,5 @@
 import maya.cmds as cmds
 from epic_pose_wrangler.v2 import main
-import RBF.module.YG_RBF_def
-reload(RBF.module.YG_RBF_def)
-YG_RBF_def = RBF.module.YG_RBF_def.YG_RBF_def()
 
 def transform2RBF():
     cmds.select('thigh_in_l','RBF_thigh_l:thigh_in_l')
@@ -18,8 +15,13 @@ def transform2RBF():
     cmds.select('thigh_bck_lwr_l','RBF_thigh_l:thigh_bck_lwr_l')
     cmds.MatchTransform()
 
+def set24fps(maxFrame):
+    cmds.currentUnit( time='film' )
+    cmds.currentTime( 0, edit=True )
+    cmds.playbackOptions( e=True, min=0, max=maxFrame, aet=maxFrame )
+
 def run():
-    YG_RBF_def.set24fps(13)
+    set24fps(13)
 
     cmds.currentTime( 4, edit=True )
     rbf_api = main.UERBFAPI(view=False)

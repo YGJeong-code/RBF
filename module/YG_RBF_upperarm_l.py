@@ -11,7 +11,14 @@ def transform2RBF():
     cmds.select('upperarm_out_l','RBF_upperarm_l:upperarm_out_l')
     cmds.MatchTransform()
 
+def set24fps(maxFrame):
+    cmds.currentUnit( time='film' )
+    cmds.currentTime( 0, edit=True )
+    cmds.playbackOptions( e=True, min=0, max=maxFrame, aet=maxFrame )
+
 def run():
+    set24fps(15)
+
     cmds.currentTime( 4, edit=True )
     rbf_api = main.UERBFAPI(view=False)
     rbf_api.create_rbf_solver(solver_name="upperarm_l_UERBFSolver", drivers=['upperarm_l']) # create solver
