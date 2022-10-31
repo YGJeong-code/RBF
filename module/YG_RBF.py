@@ -58,8 +58,8 @@ class YG_RBF(object):
         self.buildFrame = cmds.frameLayout( label='Build...', collapsable=True, collapse=False, bgc=self.myColor['orange'], cc=self.winResize, ec=self.winResize )
         cmds.columnLayout( adjustableColumn=True, p=self.buildFrame )
 
-        cmds.text(l='Freeze:', align='left')
-        cmds.button(label='freeze joint rotate', w=self.size, c=self.freezeJointRotate)
+        # cmds.text(l='Freeze:', align='left')
+        # cmds.button(label='freeze joint rotate', w=self.size, c=self.freezeJointRotate)
 
         cmds.text(l='Twist:', align='left')
         self.makeTwistBtn = cmds.button(label='make twist', w=self.size, c=self.makeTwist)
