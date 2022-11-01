@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <deformerWeight>
   <headerInfo fileName="C:/Users/ygjeong/Documents/maya/scripts/RBF/template/SKM_Manny/SKM_Manny_LOD3_skin.xml" worldMatrix="1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 -1.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000 "/>
-  <shape name="SKM_Manny_LOD3Shape" group="375" stride="3" size="7528" max="7528">
+  <shape name="SKM_Manny_LOD3Shape" group="239" stride="3" size="7528" max="7528">
     <point index="0" value=" 49.518497 -25.203510 98.071007"/>
     <point index="1" value=" 49.227684 -24.584293 98.075867"/>
     <point index="2" value=" 49.498428 -24.789845 97.839218"/>

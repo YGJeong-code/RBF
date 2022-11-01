@@ -46,56 +46,25 @@ def makeMirror(myName, mySide, myTime, myBase):
         # print myJnt
         cmds.cutKey(myJnt, clear=True, time=())
 
-# def makeMirrorPose(myName, mySide):
-#     makeLoc(myName, mySide)
-#
-# def makeLocDriver(myName, mySide):
-#     cmds.select(cl=True)
-#     myLocJnt = cmds.joint(n=myName+mySide+'_jnt')
-#
-#     myJnt = myName + mySide
-#     myLoc = cmds.spaceLocator(n=myJnt+'_loc')
-#     cmds.parent(myLoc, myLocJnt)
-#
-#     cmds.select(myLoc, myJnt)
-#     cmds.MatchTransform()
-#     cmds.setKeyframe(myLoc)
-#
-#     myMirror = cmds.mirrorJoint(myLocJnt, mirrorYZ=True,mirrorBehavior=True,searchReplace=('_l_', '_r_') )
-#     cmds.select(myMirror)
-#     myMirrorList = cmds.ls(sl=True, type='transform')
-#     cmds.delete(myLocJnt)
-#
-#     myJnt = myName + '_r'
-#     print myJnt
-#     cmds.select(myJnt, myMirrorList[1])
-#     cmds.MatchTransform()
-#     cmds.setKeyframe(myJnt)
-#
-#     cmds.delete(myMirror)
-#     cmds.select(cl=True)
-#
-# def makeMirrorDirverAni(myName, mySide, myTime, myBase):
-#     for i in range(myTime+1):
-#         cmds.currentTime( i, edit=True )
-#         makeLocDriver(myName, mySide)
-#     cmds.currentTime( myBase, edit=True )
-#
-#     myJnt = myName + mySide
-#     # print myJnt
-#     cmds.cutKey(myJnt, clear=True, time=())
-
 def set24fps(maxFrame):
     cmds.currentUnit( time='film' )
     cmds.currentTime( 0, edit=True )
     cmds.playbackOptions( e=True, min=0, max=maxFrame, aet=maxFrame )
 
-def makePose(FileName):
-    myPartsDict = YG_RBF_poseDict.myPoseDict[FileName]
+def makePose(PartsName):
+    myPartsDict = YG_RBF_poseDict.myPoseDict[PartsName]
+    myCorrectiveDict = YG_RBF_poseDict.myCorrectiveDict[PartsName]
     set24fps( list( myPartsDict )[-1] )
 
     for frame in myPartsDict:
         cmds.currentTime( frame, edit=True )
-        for axis in myPartsDict[frame]:
-            cmds.setAttr( FileName + '.' + axis, myPartsDict[frame][axis] )
-            cmds.setKeyframe( FileName )
+        for partsAxis in myPartsDict[frame]:
+            cmds.setAttr( PartsName + '.' + partsAxis, myPartsDict[frame][partsAxis] )
+            cmds.setKeyframe( PartsName )
+        for correctiveJoint in myCorrectiveDict:
+            # print('corrective Joint : %s' % correctiveJoint)
+            axisList = myCorrectiveDict[correctiveJoint][frame]
+            for axis in axisList:
+                # print('%s -> %s' % (axis, axisList[axis]))
+                cmds.setAttr( correctiveJoint + '.' + axis, axisList[axis] )
+                cmds.setKeyframe( correctiveJoint )

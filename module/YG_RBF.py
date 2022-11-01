@@ -15,8 +15,8 @@ YG_RBF_def = RBF.module.YG_RBF_def.YG_RBF_def()
 import RBF.module.YG_Twist as YG_Twist
 reload(YG_Twist)
 
-from RBF.module.YG_RBF_makePose import makePose
-from RBF.module.YG_RBF_makePose import set24fps
+import RBF.module.YG_RBF_makePose as YG_RBF_makePose
+reload(YG_RBF_makePose)
 
 
 #class
@@ -38,7 +38,7 @@ class YG_RBF(object):
         if cmds.window(self.myWin, ex=True):
             cmds.deleteUI(self.myWin)
 
-        self.myWin = cmds.window(self.myWin, t=self.myWin+'_v1.0', sizeable=True, resizeToFitChildren=True)
+        self.myWin = cmds.window(self.myWin, t=self.myWin+'_v1.1', sizeable=True, resizeToFitChildren=True)
         self.myColor = {'red':[0.6,0,0],'orange':[0.6, 0.2, 0],'yellow':[0.7, 0.6, 0.1],'green':[0.4, 0.6, 0.1]}
 
         ## template
@@ -58,8 +58,8 @@ class YG_RBF(object):
         self.buildFrame = cmds.frameLayout( label='Build...', collapsable=True, collapse=False, bgc=self.myColor['orange'], cc=self.winResize, ec=self.winResize )
         cmds.columnLayout( adjustableColumn=True, p=self.buildFrame )
 
-        # cmds.text(l='Freeze:', align='left')
-        # cmds.button(label='freeze joint rotate', w=self.size, c=self.freezeJointRotate)
+        cmds.text(l='Freeze:', align='left')
+        cmds.button(label='freeze joint rotate', w=self.size, c=self.freezeJointRotate)
 
         cmds.text(l='Twist:', align='left')
         self.makeTwistBtn = cmds.button(label='make twist', w=self.size, c=self.makeTwist)
@@ -169,16 +169,16 @@ class YG_RBF(object):
         if bool(cmds.listRelatives("root", parent=True)):
             cmds.parent('root', w=True)
 
-        self.importAnim(FileName)
-        # makePose(FileName)
+        # self.importAnim(FileName)
+        YG_RBF_makePose.makePose(FileName)
 
-        self.createRef(FileName)
-        temp = 'import YG_RBF_'+FileName
-        exec(temp)
-        temp = 'reload(YG_RBF_'+FileName+')'
-        exec(temp)
-        temp = 'YG_RBF_' + FileName + '.run()'
-        exec(temp)
+        # self.createRef(FileName)
+        # temp = 'import YG_RBF_'+FileName
+        # exec(temp)
+        # temp = 'reload(YG_RBF_'+FileName+')'
+        # exec(temp)
+        # temp = 'YG_RBF_' + FileName + '.run()'
+        # exec(temp)
 
         self.rbfList()
 
@@ -187,7 +187,7 @@ class YG_RBF(object):
         cmds.cutKey(myJnt, clear=True, time=())
 
         # reload(RBF.module.YG_RBF_def)
-        set24fps(24)
+        YG_RBF_makePose.set24fps(24)
         cmds.currentTime( 0, edit=True )
 
         filePath = self.mayascripts+"RBF/template/RBF_Target/"
@@ -215,7 +215,7 @@ class YG_RBF(object):
         myJnt = cmds.ls('root',dag=True)
         cmds.cutKey(myJnt, clear=True, time=())
 
-        set24fps(24)
+        YG_RBF_makePose.set24fps(24)
         cmds.currentTime( 0, edit=True )
 
         myList = ['clavicle_l','upperarm_l','lowerarm_l','hand_l','thigh_l','calf_l','foot_l',

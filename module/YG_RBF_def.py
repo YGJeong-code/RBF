@@ -33,15 +33,13 @@ class YG_RBF_def(object):
         # save skin
         self.saveSkin()
 
-        # make skin joint list
-        # self.skinJntList()
-
         # make joint parent dict
         myJnt = cmds.ls('root', dag=True, type='joint')
         for i in myJnt:
             # make dict
-            myParent = cmds.listRelatives(i, p=True)
-            self.myJntParentDict[i]=myParent[0]
+            if bool(cmds.listRelatives(i, p=True)):
+                myParent = cmds.listRelatives(i, p=True)
+                self.myJntParentDict[i]=myParent[0]
 
         # delete skin
         for i in self.myMeshList:
