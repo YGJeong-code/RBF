@@ -1,4 +1,5 @@
 import maya.cmds as cmds
+from imp import reload
 import RBF.module.YG_RBF_poseDict as YG_RBF_poseDict
 reload(YG_RBF_poseDict)
 
@@ -26,7 +27,7 @@ def makeLoc(myName, mySide):
 
     for i in range(1,len(myMirrorList)):
         myJnt = myMirrorList[i].replace('l_loc1', "r")
-        print myJnt
+        print (myJnt)
         cmds.select(myJnt, myMirrorList[i])
         cmds.MatchTransform()
         cmds.setKeyframe(myJnt)

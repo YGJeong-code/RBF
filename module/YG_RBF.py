@@ -7,6 +7,7 @@
 #==============================
 import maya.cmds as cmds
 import maya.mel as mel
+from imp import reload
 
 import RBF.module.YG_RBF_def
 reload(RBF.module.YG_RBF_def)
@@ -156,7 +157,7 @@ class YG_RBF(object):
         myList = YG_RBF_def.rbfList()
         if myList:
             for i in myList:
-                print i
+                print (i)
                 # temp = str(i).split('_')[0]
                 buildBtn = str(i).replace('_UERBFSolver','_Btn')
                 delBtn = str(i).replace('_UERBFSolver','_DelBtn')
@@ -198,7 +199,7 @@ class YG_RBF(object):
 
         reload(RBF.module.YG_RBF_def)
         myList = YG_RBF_def.rbfList()
-        # print myList
+        # print (myList)
         if myList:
             for i in myList:
                 # print ('list --> %s' % i)
@@ -304,11 +305,11 @@ class YG_RBF(object):
     # window resize
     ############################################################################################################################################################################################################################
     def winResize(self, *args):
-        cmds.window(self.myWin, e=True, w=50L, h=50L)
+        cmds.window(self.myWin, e=True, w=50, h=50)
 
     def getsize(self, *args):
         size = cmds.window(self.myWin, q=True, widthHeight=True)
-        print size
+        print (size)
 
 myTest = YG_RBF()
 myTest.winResize()
