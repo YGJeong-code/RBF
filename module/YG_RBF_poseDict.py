@@ -93,3 +93,38 @@ myCorrectiveDict = {'upperarm_l':{
 }
 }
 }
+
+myDrvList = ['clavicle_l_drv', 'upperarm_l_drv', 'lowerarm_l_drv', 'hand_l_drv',
+'thumb_01_l_drv', 'thumb_02_l_drv', 'thumb_03_l_drv',
+'index_01_l_drv', 'index_02_l_drv', 'index_03_l_drv',
+'middle_01_l_drv', 'middle_02_l_drv', 'middle_03_l_drv',
+'ring_01_l_drv', 'ring_02_l_drv', 'ring_03_l_drv',
+'pinky_01_l_drv', 'pinky_02_l_drv', 'pinky_03_l_drv',
+'clavicle_r_drv', 'upperarm_r_drv', 'lowerarm_r_drv', 'hand_r_drv',
+'thumb_01_r_drv', 'thumb_02_r_drv','thumb_03_r_drv',
+'index_01_r_drv','index_02_r_drv', 'index_03_r_drv',
+'middle_01_r_drv', 'middle_02_r_drv', 'middle_03_r_drv',
+'ring_01_r_drv', 'ring_02_r_drv', 'ring_03_r_drv',
+'pinky_01_r_drv', 'pinky_02_r_drv', 'pinky_03_r_drv',
+'thigh_l_drv', 'thigh_r_drv']
+
+myDrvListRotDic ={'clavicle_l_drv': [0.2,-8.777,-2.661], 'clavicle_r_drv': [180.2,188.777,-182.661],
+'upperarm_l_drv': [1.727,-46.163,1.779], 'upperarm_r_drv': [1.727,-46.163,1.779],
+'lowerarm_l_drv': [0,0,38.979], 'lowerarm_r_drv': [0,0,38.979],
+'hand_l_drv': [-22.226,1.154,-2.063], 'hand_r_drv': [-22.226,1.154,-2.063],
+'thumb_01_l_drv': [0,0,0], 'thumb_01_r_drv': [0,0,0],
+'thumb_02_l_drv': [-4.006,0.379,-23.319], 'thumb_02_r_drv': [-4.006,0.379,-23.319],
+'thumb_03_l_drv': [0,0,-10], 'thumb_03_r_drv': [0,0,-10],
+'index_01_l_drv': [0,0,-23.373], 'index_01_r_drv': [0,0,-23.373],
+'index_02_l_drv': [0,0,-14.893], 'index_02_r_drv': [0,0,-14.893],
+'index_03_l_drv': [0,0,-12.516], 'index_03_r_drv': [0,0,-12.516],
+'middle_01_l_drv': [0,0,-31.573], 'middle_01_r_drv': [0,0,-31.573],
+'middle_02_l_drv': [0,0,-20.769], 'middle_02_r_drv': [0,0,-20.769],
+'middle_03_l_drv': [0,0,-10], 'middle_03_r_drv': [0,0,-10],
+'ring_01_l_drv': [-5.634,-3.035,-29.272], 'ring_01_r_drv': [-5.634,-3.035,-29.272],
+'ring_02_l_drv': [0,0,-18.964], 'ring_02_r_drv': [0,0,-18.964],
+'ring_03_l_drv': [0,0,-9.168], 'ring_03_r_drv': [0,0,-9.168],
+'pinky_01_l_drv': [-10,-3.248,-14.494], 'pinky_01_r_drv': [-10,-3.248,-14.494],
+'pinky_02_l_drv': [0,0,-21.287], 'pinky_02_r_drv': [0,0,-21.287],
+'pinky_03_l_drv': [0,0,-4.917], 'pinky_03_r_drv': [0,0,-4.917],
+'thigh_l_drv': [-8.425,3.081,-0.53], 'thigh_r_drv': [-8.425,3.081,-0.53]}
